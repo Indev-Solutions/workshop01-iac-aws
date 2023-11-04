@@ -1,0 +1,6 @@
+**/.idea/
+**/.terraform/
+*.p12
+*.pem
+*.pfx
+*.hcl
