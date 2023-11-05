@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "brstworkshop1"
-    key    = "workshop1/iac/rst/pro/bastion"
+    key    = "rst/iac"
     region = "us-east-1"
   }
 

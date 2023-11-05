@@ -29,4 +29,4 @@ subnet7_cidr = "10.0.1.160/28"
 subnet8_cidr = "10.0.1.176/28"
 
 # Public IP of architect
-public_ip_architect = "185.105.36.79/32"
+public_ip_architect = "185.105.37.25/32"
