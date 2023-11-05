@@ -32,3 +32,14 @@ call terraform fmt
 call terraform plan -var-file="../variables.tfvars"
 call terraform apply -var-file="../variables.tfvars" -auto-approve
 call terraform state list
+
+echo Deploying logic layer of kubernetes
+cd ../04_kubernetes
+call terraform init
+call terraform workspace list
+call terraform workspace select -or-create=true workshop1-pro-kubernetes
+call terraform validate
+call terraform fmt
+call terraform plan -var-file="../variables.tfvars"
+call terraform apply -var-file="../variables.tfvars" -auto-approve
+call terraform state list
