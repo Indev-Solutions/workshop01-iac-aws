@@ -9,11 +9,9 @@ resource "aws_eks_cluster" "my_eks" {
 
   vpc_config {
     subnet_ids = [
-      data.terraform_remote_state.networking.outputs.my_subnet2_id,
-      data.terraform_remote_state.networking.outputs.my_subnet3_id,
-      data.terraform_remote_state.networking.outputs.my_subnet4_id,
-      data.terraform_remote_state.networking.outputs.my_subnet5_id,
-      data.terraform_remote_state.networking.outputs.my_subnet6_id
+      data.terraform_remote_state.networking.outputs.my_private_subnet1_lb_id,
+      data.terraform_remote_state.networking.outputs.my_private_subnet1_eks_id,
+      data.terraform_remote_state.networking.outputs.my_private_subnet2_eks_id
     ]
     endpoint_private_access = true
     endpoint_public_access  = true
@@ -33,10 +31,13 @@ resource "aws_eks_node_group" "my_eks_ng" {
   cluster_name    = aws_eks_cluster.my_eks.name
   node_group_name = "my_eks_ng"
   node_role_arn   = data.aws_iam_role.my_eks_ng_role.arn
-  subnet_ids      = [data.terraform_remote_state.networking.outputs.my_subnet3_id, data.terraform_remote_state.networking.outputs.my_subnet4_id]
-  capacity_type   = "SPOT"
-  ami_type        = "AL2_x86_64"
-  instance_types  = ["t3.medium"]
+  subnet_ids = [
+    data.terraform_remote_state.networking.outputs.my_private_subnet1_eks_id,
+    data.terraform_remote_state.networking.outputs.my_private_subnet2_eks_id
+  ]
+  capacity_type  = "SPOT"
+  ami_type       = "AL2_x86_64"
+  instance_types = ["t3.medium"]
 
   scaling_config {
     desired_size = 1
