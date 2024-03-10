@@ -1,5 +1,5 @@
 resource "aws_network_interface" "my_ni1" {
-  subnet_id = data.terraform_remote_state.networking.outputs.my_subnet1_id
+  subnet_id = data.terraform_remote_state.networking.outputs.my_public_subnet1_id
 
   tags = {
     Name = "my_ni1"
