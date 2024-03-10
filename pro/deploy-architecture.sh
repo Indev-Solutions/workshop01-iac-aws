@@ -19,3 +19,36 @@ terraform fmt
 terraform plan -var-file="../variables.tfvars"
 terraform apply -var-file="../variables.tfvars" -auto-approve
 terraform state list
+
+echo Deploying logic layer of database
+cd ../03_database
+terraform init
+terraform workspace list
+terraform workspace select -or-create=true workshop1-pro-database
+terraform validate
+terraform fmt
+terraform plan -var-file="../variables.tfvars"
+terraform apply -var-file="../variables.tfvars" -auto-approve
+terraform state list
+
+echo Deploying logic layer of kubernetes
+cd ../04_kubernetes
+terraform init
+terraform workspace list
+terraform workspace select -or-create=true workshop1-pro-kubernetes
+terraform validate
+terraform fmt
+terraform plan -var-file="../variables.tfvars"
+terraform apply -var-file="../variables.tfvars" -auto-approve
+terraform state list
+
+echo Deploying logic layer of frontend
+cd ../05_frontend
+terraform init
+terraform workspace list
+terraform workspace select -or-create=true workshop1-pro-frontend
+terraform validate
+terraform fmt
+terraform plan -var-file="../variables.tfvars"
+terraform apply -var-file="../variables.tfvars" -auto-approve
+terraform state list
