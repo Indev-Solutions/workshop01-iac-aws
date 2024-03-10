@@ -8,44 +8,34 @@ variable "vpc_cidr" {
   description = "Range of IP addresses for VPC"
 }
 
-variable "subnet1_cidr" {
+variable "public_subnet1_cidr" {
   type        = string
-  description = "Range of IP addresses for subnet 1"
+  description = "Range of IP addresses for public subnet 1"
 }
 
-variable "subnet2_cidr" {
+variable "private_subnet1_lb_cidr" {
   type        = string
-  description = "Range of IP addresses for subnet 2"
+  description = "Range of IP addresses for private subnet 1 of load balancer"
 }
 
-variable "subnet3_cidr" {
+variable "private_subnet1_eks_cidr" {
   type        = string
-  description = "Range of IP addresses for subnet 3"
+  description = "Range of IP addresses for private subnet 1 of eks"
 }
 
-variable "subnet4_cidr" {
+variable "private_subnet2_eks_cidr" {
   type        = string
-  description = "Range of IP addresses for subnet 4"
+  description = "Range of IP addresses for private subnet 2 of eks"
 }
 
-variable "subnet5_cidr" {
+variable "private_subnet1_rds_cidr" {
   type        = string
-  description = "Range of IP addresses for subnet 5"
+  description = "Range of IP addresses for private subnet 1 of rds"
 }
 
-variable "subnet6_cidr" {
+variable "private_subnet2_rds_cidr" {
   type        = string
-  description = "Range of IP addresses for subnet 6"
-}
-
-variable "subnet7_cidr" {
-  type        = string
-  description = "Range of IP addresses for subnet 7"
-}
-
-variable "subnet8_cidr" {
-  type        = string
-  description = "Range of IP addresses for subnet 8"
+  description = "Range of IP addresses for private subnet 2 of rds"
 }
 
 variable "public_ip_architect" {

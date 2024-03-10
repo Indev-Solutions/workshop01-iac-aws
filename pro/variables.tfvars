@@ -4,29 +4,23 @@ region = "us-east-1"
 # Range of IP addresses for VPC
 vpc_cidr = "10.0.1.0/24"
 
-# Range of IP addresses for subnet 1
-subnet1_cidr = "10.0.1.0/28"
+# Range of IP addresses for public subnet 1
+public_subnet1_cidr = "10.0.1.0/28"
 
-# Range of IP addresses for subnet 2
-subnet2_cidr = "10.0.1.16/28"
+# Range of IP addresses for private subnet 1 of load balancer
+private_subnet1_lb_cidr = "10.0.1.16/28"
 
-# Range of IP addresses for subnet 3
-subnet3_cidr = "10.0.1.32/27"
+# Range of IP addresses for private subnet 1 of eks
+private_subnet1_eks_cidr = "10.0.1.32/27"
 
-# Range of IP addresses for subnet 4
-subnet4_cidr = "10.0.1.64/27"
+# Range of IP addresses for private subnet 2 of eks
+private_subnet2_eks_cidr = "10.0.1.64/27"
 
-# Range of IP addresses for subnet 5
-subnet5_cidr = "10.0.1.96/27"
+# Range of IP addresses for private subnet 1 of rds
+private_subnet1_rds_cidr = "10.0.1.96/28"
 
-# Range of IP addresses for subnet 6
-subnet6_cidr = "10.0.1.128/27"
-
-# Range of IP addresses for subnet 7
-subnet7_cidr = "10.0.1.160/28"
-
-# Range of IP addresses for subnet 8
-subnet8_cidr = "10.0.1.176/28"
+# Range of IP addresses for private subnet 2 of rds
+private_subnet2_rds_cidr = "10.0.1.112/28"
 
 # Public IP of architect
-public_ip_architect = "185.105.37.25/32"
+public_ip_architect = "185.105.36.109/32"
