@@ -1,33 +1,25 @@
-output "my_subnet1_id" {
-  value = aws_subnet.my_subnet1.id
+output "my_public_subnet1_id" {
+  value = aws_subnet.my_public_subnet1.id
 }
 
-output "my_subnet2_id" {
-  value = aws_subnet.my_subnet2.id
+output "my_private_subnet1_lb_id" {
+  value = aws_subnet.my_private_subnet1_lb.id
 }
 
-output "my_subnet3_id" {
-  value = aws_subnet.my_subnet3.id
+output "my_private_subnet1_eks_id" {
+  value = aws_subnet.my_private_subnet1_eks.id
 }
 
-output "my_subnet4_id" {
-  value = aws_subnet.my_subnet4.id
+output "my_private_subnet2_eks_id" {
+  value = aws_subnet.my_private_subnet2_eks.id
 }
 
-output "my_subnet5_id" {
-  value = aws_subnet.my_subnet5.id
+output "my_private_subnet1_rds_id" {
+  value = aws_subnet.my_private_subnet1_rds.id
 }
 
-output "my_subnet6_id" {
-  value = aws_subnet.my_subnet6.id
-}
-
-output "my_subnet7_id" {
-  value = aws_subnet.my_subnet7.id
-}
-
-output "my_subnet8_id" {
-  value = aws_subnet.my_subnet8.id
+output "my_private_subnet2_rds_id" {
+  value = aws_subnet.my_private_subnet2_rds.id
 }
 
 output "my_vpc1_default_security_group_id" {
