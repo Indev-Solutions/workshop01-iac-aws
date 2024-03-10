@@ -43,3 +43,14 @@ call terraform fmt
 call terraform plan -var-file="../variables.tfvars"
 call terraform apply -var-file="../variables.tfvars" -auto-approve
 call terraform state list
+
+echo Deploying logic layer of frontend
+cd ../05_frontend
+call terraform init
+call terraform workspace list
+call terraform workspace select -or-create=true workshop1-pro-frontend
+call terraform validate
+call terraform fmt
+call terraform plan -var-file="../variables.tfvars"
+call terraform apply -var-file="../variables.tfvars" -auto-approve
+call terraform state list

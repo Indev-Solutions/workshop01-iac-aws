@@ -1,6 +1,6 @@
 resource "aws_db_subnet_group" "my_db_subnet_group" {
   name       = "my_db_subnet_group"
-  subnet_ids = [data.terraform_remote_state.networking.outputs.my_subnet7_id, data.terraform_remote_state.networking.outputs.my_subnet8_id]
+  subnet_ids = [data.terraform_remote_state.networking.outputs.my_private_subnet1_rds_id, data.terraform_remote_state.networking.outputs.my_private_subnet2_rds_id]
 
   tags = {
     Name = "my_db_subnet_group"
@@ -31,4 +31,20 @@ resource "aws_db_instance" "my_db_instance" {
   tags = {
     Name = "my_db_instance"
   }
+}
+
+data "aws_secretsmanager_secret" "my_sm1" {
+  name = "pro/workshop1/secrets"
+}
+
+locals {
+  secrets = {
+    database_password = random_string.database_password.result
+    database_hostname = aws_db_instance.my_db_instance.address
+  }
+}
+
+resource "aws_secretsmanager_secret_version" "shared_secrets" {
+  secret_id     = data.aws_secretsmanager_secret.my_sm1.id
+  secret_string = jsonencode(local.secrets)
 }

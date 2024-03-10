@@ -13,7 +13,7 @@ resource "aws_route" "my_route1" {
 }
 
 resource "aws_route_table_association" "my_rta1" {
-  subnet_id      = aws_subnet.my_subnet1.id
+  subnet_id      = aws_subnet.my_public_subnet1.id
   route_table_id = aws_route_table.my_rt1.id
 }
 
@@ -32,21 +32,34 @@ resource "aws_route" "my_route2" {
 }
 
 resource "aws_route_table_association" "my_rta2" {
-  subnet_id      = aws_subnet.my_subnet3.id
+  subnet_id      = aws_subnet.my_private_subnet1_eks.id
   route_table_id = aws_route_table.my_rt2.id
 }
 
 resource "aws_route_table_association" "my_rta3" {
-  subnet_id      = aws_subnet.my_subnet4.id
+  subnet_id      = aws_subnet.my_private_subnet2_eks.id
   route_table_id = aws_route_table.my_rt2.id
+}
+
+resource "aws_route_table" "my_rt3" {
+  vpc_id = aws_vpc.my_vpc1.id
+
+  tags = {
+    Name = "my_rt3"
+  }
 }
 
 resource "aws_route_table_association" "my_rta4" {
-  subnet_id      = aws_subnet.my_subnet5.id
-  route_table_id = aws_route_table.my_rt2.id
+  subnet_id      = aws_subnet.my_private_subnet1_lb.id
+  route_table_id = aws_route_table.my_rt3.id
 }
 
 resource "aws_route_table_association" "my_rta5" {
-  subnet_id      = aws_subnet.my_subnet6.id
-  route_table_id = aws_route_table.my_rt2.id
+  subnet_id      = aws_subnet.my_private_subnet1_rds.id
+  route_table_id = aws_route_table.my_rt3.id
+}
+
+resource "aws_route_table_association" "my_rta6" {
+  subnet_id      = aws_subnet.my_private_subnet2_rds.id
+  route_table_id = aws_route_table.my_rt3.id
 }
