@@ -22,7 +22,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
       - run: pwd
-      - run: cd pro
+      - run: cd ./pro
       - run: pwd
       - name: Execute Terraform
         run: ./deploy-architecture.sh
