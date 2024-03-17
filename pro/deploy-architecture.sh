@@ -42,8 +42,19 @@ terraform plan -var-file="../variables.tfvars"
 terraform apply -var-file="../variables.tfvars" -auto-approve
 terraform state list
 
+echo Deploying logic layer of integration
+cd ../05_integration
+terraform init
+terraform workspace list
+terraform workspace select -or-create=true workshop1-pro-integration
+terraform validate
+terraform fmt
+terraform plan -var-file="../variables.tfvars"
+terraform apply -var-file="../variables.tfvars" -auto-approve
+terraform state list
+
 echo Deploying logic layer of frontend
-cd ../05_frontend
+cd ../06_frontend
 terraform init
 terraform workspace list
 terraform workspace select -or-create=true workshop1-pro-frontend

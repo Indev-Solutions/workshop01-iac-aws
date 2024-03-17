@@ -1,10 +1,17 @@
 @ECHO OFF
 
 echo Destroying logic layer of frontend
-cd 05_frontend
+cd 06_frontend
 call terraform init
 call terraform workspace list
 call terraform workspace select workshop1-pro-frontend
+call terraform destroy -var-file="../variables.tfvars" -auto-approve
+
+echo Destroying logic layer of integration
+cd ../05_integration
+call terraform init
+call terraform workspace list
+call terraform workspace select workshop1-pro-integration
 call terraform destroy -var-file="../variables.tfvars" -auto-approve
 
 echo Destroying logic layer of kubernetes

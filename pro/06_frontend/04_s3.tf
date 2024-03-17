@@ -29,17 +29,22 @@ resource "aws_s3_bucket_website_configuration" "my_s3_bucket_website" {
 }
 
 resource "aws_s3_bucket_public_access_block" "my_s3_bucket_pab" {
-  bucket = aws_s3_bucket.my_s3_bucket.id
-
+  bucket                  = aws_s3_bucket.my_s3_bucket.id
   block_public_acls       = false
   block_public_policy     = false
   ignore_public_acls      = false
   restrict_public_buckets = false
 }
 
+resource "time_sleep" "wait_30_seconds" {
+  depends_on      = [aws_s3_bucket_public_access_block.my_s3_bucket_pab]
+  create_duration = "30s"
+}
+
 resource "aws_s3_bucket_policy" "my_s3_bucket_policy" {
-  bucket = aws_s3_bucket.my_s3_bucket.id
-  policy = data.aws_iam_policy_document.my_custom_policy_document.json
+  depends_on = [time_sleep.wait_30_seconds]
+  bucket     = aws_s3_bucket.my_s3_bucket.id
+  policy     = data.aws_iam_policy_document.my_custom_policy_document.json
 }
 
 data "aws_iam_policy_document" "my_custom_policy_document" {
