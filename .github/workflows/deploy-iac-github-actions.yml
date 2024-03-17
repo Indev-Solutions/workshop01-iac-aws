@@ -1,6 +1,9 @@
 name: Deploy IaC (Terraform)
 run-name: ${{ github.actor }} is starting the execution of gitops pipeline "Deploy IaC (Terraform)" with GitHub Actions
-on: workflow_dispatch
+on:
+  pull_request:
+    branches: [ "develop", "master" ]
+  workflow_dispatch:
 env:
   AWS_REGION: us-east-1
 jobs:
@@ -24,3 +27,12 @@ jobs:
       - name: Execute Terraform
         working-directory: ./pro
         run: sh deploy-architecture.sh
+  slackNotification:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
