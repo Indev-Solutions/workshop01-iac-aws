@@ -8,9 +8,8 @@ resource "aws_db_subnet_group" "my_db_subnet_group" {
 }
 
 resource "random_string" "database_password" {
-  length           = 12
-  special          = true
-  override_special = "@$"
+  length  = 12
+  special = false
 }
 
 resource "aws_db_instance" "my_db_instance" {
