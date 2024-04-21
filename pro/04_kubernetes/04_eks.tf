@@ -24,7 +24,7 @@ resource "aws_eks_cluster" "my_eks" {
 }
 
 data "aws_iam_role" "my_eks_ng_role" {
-  name = "CustomAWSServiceRoleForAmazonEKSNodegroup"
+  name = var.eks_ng_role
 }
 
 resource "aws_eks_node_group" "my_eks_ng" {
@@ -57,4 +57,13 @@ resource "aws_security_group_rule" "my_sgr2" {
   protocol                 = "tcp"
   source_security_group_id = aws_eks_cluster.my_eks.vpc_config[0].cluster_security_group_id
   security_group_id        = data.terraform_remote_state.networking.outputs.my_vpc1_default_security_group_id
+}
+
+resource "aws_security_group_rule" "my_sgr3" {
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks       = [var.public_subnet1_cidr]
+  security_group_id = aws_eks_cluster.my_eks.vpc_config[0].cluster_security_group_id
 }
