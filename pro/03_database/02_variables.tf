@@ -5,7 +5,7 @@ variable "region" {
 
 variable "vpc_cidr" {
   type        = string
-  description = "Range of IP addresses for VPC"
+  description = "Range of IP addresses for vpc"
 }
 
 variable "public_subnet1_cidr" {
@@ -59,4 +59,9 @@ variable "apigateway_jwt_configuration_issuer" {
   type        = string
   description = "Issuer of JWT configuration for api gateway"
   sensitive   = true
+}
+
+variable "eks_ng_role" {
+  type        = string
+  description = "Role of node group for eks"
 }

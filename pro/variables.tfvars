@@ -1,7 +1,7 @@
 # AWS region for all cloud resources
 region = "us-east-1"
 
-# Range of IP addresses for VPC
+# Range of IP addresses for vpc
 vpc_cidr = "10.0.1.0/24"
 
 # Range of IP addresses for public subnet 1
@@ -23,4 +23,7 @@ private_subnet1_rds_cidr = "10.0.1.96/28"
 private_subnet2_rds_cidr = "10.0.1.112/28"
 
 # Public IP of architect
-public_ip_architect = "185.105.36.14/32"
+public_ip_architect = "79.116.215.24/32"
+
+# Role of node group for eks
+eks_ng_role = "CustomAWSServiceRoleForAmazonEKSNodegroup"

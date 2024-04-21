@@ -7,9 +7,10 @@ resource "aws_network_interface" "my_ni1" {
 }
 
 resource "aws_instance" "my_instance1" {
-  ami           = "ami-053b0d53c279acc90"
-  instance_type = "t2.micro"
-  key_name      = "kp01workshop"
+  ami                  = "ami-053b0d53c279acc90"
+  instance_type        = "t2.micro"
+  key_name             = "kp01workshop"
+  iam_instance_profile = var.eks_ng_role
 
   network_interface {
     network_interface_id = aws_network_interface.my_ni1.id
