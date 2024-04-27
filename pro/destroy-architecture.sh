@@ -1,5 +1,4 @@
 echo Destroying logic layer of frontend
-
 cd 06_frontend
 terraform init
 terraform workspace list

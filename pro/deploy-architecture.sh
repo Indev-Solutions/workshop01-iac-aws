@@ -1,5 +1,4 @@
 echo Deploying logic layer of networking
-
 cd 01_networking
 terraform init
 terraform workspace list
