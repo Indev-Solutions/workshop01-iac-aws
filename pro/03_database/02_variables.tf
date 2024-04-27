@@ -43,24 +43,6 @@ variable "public_ip_architect" {
   description = "Public IP of architect"
 }
 
-variable "apigateway_integration_uri" {
-  type        = string
-  description = "Integration URI for api gateway"
-  sensitive   = true
-}
-
-variable "apigateway_jwt_configuration_audience" {
-  type        = string
-  description = "Audience of JWT configuration for api gateway"
-  sensitive   = true
-}
-
-variable "apigateway_jwt_configuration_issuer" {
-  type        = string
-  description = "Issuer of JWT configuration for api gateway"
-  sensitive   = true
-}
-
 variable "eks_ng_role" {
   type        = string
   description = "Role of node group for eks"
