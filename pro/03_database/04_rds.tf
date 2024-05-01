@@ -16,7 +16,6 @@ resource "aws_db_instance" "my_db_instance" {
   allocated_storage      = 20
   db_name                = "workshop"
   engine                 = "postgres"
-  engine_version         = "15.3"
   instance_class         = "db.t3.micro"
   username               = "dbadmin"
   password               = random_string.database_password.result
