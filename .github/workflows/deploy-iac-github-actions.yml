@@ -27,3 +27,13 @@ jobs:
       - name: Execute Terraform
         working-directory: ./pro
         run: sh deploy-architecture.sh
+      - name: Send Message to Slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          payload: |
+            {
+              "text": "The execution of gitops pipeline 'Deploy IaC (Terraform)' with GitHub Actions have finished"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
