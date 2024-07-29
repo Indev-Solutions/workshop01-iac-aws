@@ -20,6 +20,16 @@ resource "aws_instance" "my_instance1" {
   tags = {
     Name = "my_instance1"
   }
+
+  user_data = data.template_file.startup_script.rendered
+}
+
+data "template_file" "startup_script" {
+  template = file("script.sh")
+
+  vars = {
+    SCRIPT_DESCRIPTION = "Deploying configuration of bastion"
+  }
 }
 
 resource "aws_eip" "my_eip_ec2" {
