@@ -6,9 +6,6 @@ on:
   workflow_dispatch:
 env:
   AWS_REGION: us-east-1
-  TF_VAR_apigateway_integration_uri: ${{ secrets.TF_VAR_APIGATEWAY_INTEGRATION_URI }}
-  TF_VAR_apigateway_jwt_configuration_audience: ${{ secrets.TF_VAR_APIGATEWAY_JWT_CONFIGURATION_AUDIENCE }}
-  TF_VAR_apigateway_jwt_configuration_issuer: ${{ secrets.TF_VAR_APIGATEWAY_JWT_CONFIGURATION_ISSUER }}
 jobs:
   terraform:
     name: 'Terraform Deploy'
