@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo "${SCRIPT_DESCRIPTION}"
 cd /home/ubuntu
 mkdir actions-runner && cd actions-runner
