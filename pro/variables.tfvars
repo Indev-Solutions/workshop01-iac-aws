@@ -23,7 +23,7 @@ private_subnet1_rds_cidr = "10.0.1.96/28"
 private_subnet2_rds_cidr = "10.0.1.112/28"
 
 # Public IP of architect
-public_ip_architect = "179.6.160.30/32"
+public_ip_architect = "185.105.37.172/32"
 
 # Role of node group for eks
 eks_ng_role = "CustomAWSServiceRoleForAmazonEKSNodegroup"
