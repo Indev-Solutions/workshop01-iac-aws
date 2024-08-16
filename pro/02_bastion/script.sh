@@ -28,5 +28,7 @@ printf 'export M2_HOME="/opt/apache-maven-3.9.6"\n' >> .profile
 printf 'PATH="$PATH:$M2_HOME/bin"\n' >> .profile
 mvn --version
 echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">' > .m2/settings.xml
-printf '<servers><server><id>github</id><username>${env.GITHUB_ACTOR}</username><password>${env.GITHUB_TOKEN}</password></server></servers>\n' >> .m2/settings.xml
+printf '<servers><server><id>github</id><username>$' >> .m2/settings.xml
+printf '{env.GITHUB_ACTOR}</username><password>$' >> .m2/settings.xml
+printf '{env.GITHUB_TOKEN}</password></server></servers>\n' >> .m2/settings.xml
 printf '</settings>' >> .m2/settings.xml
